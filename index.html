@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>❤️ Venom ❤️</title>
+  <style>
+    body {
+      background: url('bg-light.jpg') no-repeat center center fixed;
+      background-size: cover;
+      text-align: center;
+      padding-top: 100px;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      width: 90%;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 40px;
+      color: #333;
+      transition: 0.3s ease;
+    }
+
+    h1:hover {
+      color: rgb(228, 17, 17);
+      transform: scale(1.05);
+    }
+
+    p {
+      font-size: 18px;
+      color: rgb(80, 80, 80);
+      margin-top: 10px;
+    }
+
+    .my-pic {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #333;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .my-pic:hover {
+      transform: scale(1.1);
+    }
+
+    .contact-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ff4b2b;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 16px;
+      transition: 0.3s ease;
+      margin: 10px;
+    }
+
+    .contact-button:hover {
+      background-color: #ff416c;
+      transform: scale(1.05);
+    }
+
+    .mode-toggle, .lang-toggle {
+      margin-top: 20px;
+      padding: 8px 15px;
+      font-size: 14px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      background-color: #222;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .mode-toggle:hover, .lang-toggle:hover {
+      background-color: #444;
+    }
+
+    .dark-mode {
+      background-color: #121212;
+      color: white;
+    }
+
+    .dark-mode .card {
+      background-color: #1e1e1e;
+      color: white;
+      box-shadow: 0 0 15px black;
+    }
+
+    .dark-mode h1 {
+      color: white;
+    }
+
+    .dark-mode p {
+      color: #ccc;
+    }
+
+    .dark-mode .contact-button {
+      background-color: #444;
+    }
+
+    .dark-mode .contact-button:hover {
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1 id="main-title">صفحة تعريف لعبدو</h1>
+    <img src="me.jpg" alt="صورتي" class="my-pic">
+    <p id="main-text">👋 أهلاً بك في عالمي!</p>
+    <a href="https://instagram.com/nv_lx0" target="_blank" class="contact-button" id="contact-btn">📸 تواصل معي</a>
+    <a href="projects.html" class="contact-button" id="projects-btn">🎥 مشاريعي</a>
+    <br>
+    <button onclick="toggleMode()" class="mode-toggle">🌗 غيّر الوضع</button>
+    <button onclick="toggleLang()" class="lang-toggle">🌍 EN/AR</button>
+  </div>
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    let isArabic = true;
+    function toggleLang() {
+      if (isArabic) {
+        document.getElementById("main-title").innerText = "Abdou's Portfolio Page";
+        document.getElementById("main-text").innerText = "Welcome to my world!";
+        document.getElementById("contact-btn").innerText = "📸 Contact me";
+        document.getElementById("projects-btn").innerText = "🎬 My Projects";
+        isArabic = false;
+      } else {
+        document.getElementById("main-title").innerText = "صفحة تعريف لعبدو";
+        document.getElementById("main-text").innerText = "👋 أهلاً بك في عالمي!";
+        document.getElementById("contact-btn").innerText = "📸 تواصل معي";
+        document.getElementById("projects-btn").innerText = "🎬 مشاريعي";
+        isArabic = true;
+      }
+    }
+  </script>
+</body>
+</html>

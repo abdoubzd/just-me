@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎬 مشاريعي في المونتاج</title>
+  <style>
+    body {
+      background: url('design-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      background-color: rgba(0, 0, 0, 0.6);
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: #ff4b2b;
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .project {
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      transition: 0.3s ease;
+      width: 100%;
+      max-width: 350px;
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
+    }
+
+    .project:hover {
+      box-shadow: 0 0 15px #ff4b2b;
+      transform: scale(1.02);
+    }
+
+    video {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .back-button {
+      margin-top: 40px;
+      padding: 10px 20px;
+      background-color: #ff4b2b;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 16px;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .back-button:hover {
+      background-color: #ff416c;
+    }
+
+    .music-controls {
+      margin-top: 30px;
+    }
+
+    .music-controls button {
+      background-color: #444;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .music-controls button:hover {
+      background-color: #666;
+    }
+
+    footer {
+      margin-top: 50px;
+      color: #ccc;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎬 مشاريعي في المونتاج</h1>
+
+  <div class="grid">
+    <div class="project"><video controls src="edit1.mp4"></video></div>
+    <div class="project"><video controls src="edit2.mp4"></video></div>
+    <div class="project"><video controls src="edit3.mp4"></video></div>
+    <div class="project"><video controls src="edit4.mp4"></video></div>
+    <div class="project"><video controls src="edit5.mp4"></video></div>
+    <div class="project"><video controls src="edit6.mp4"></video></div>
+    <div class="project"><video controls src="edit7.mp4"></video></div>
+  </div>
+
+  <div class="music-controls">
+    <button onclick="toggleMusic()">🎵 كتم/تشغيل الموسيقى</button>
+    <audio id="bgMusic" loop autoplay>
+      <source src="music.mp3" type="audio/mp3">
+    </audio>
+  </div>
+
+  <a href="index.html" class="back-button">🔙 العودة للرئيسية</a>
+
+  <footer>
+    &copy; 2025 عبدو | جميع الحقوق محفوظة
+  </footer>
+
+  <script>
+    const music = document.getElementById("bgMusic");
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+  </script>
+</body>
+</html>
