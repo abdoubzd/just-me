@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>Matrix + Countdown + Message</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+    }
+    canvas {
+      display: block;
+    }
+
+    /* العد التنازلي */
+    #countdown {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 120px;
+      color: #cccccc;
+      font-family: "Courier New", monospace;
+      text-shadow: 0 0 10px #cccccc, 0 0 20px #aaaaaa, 0 0 40px #999999;
+      animation: glow 1.5s ease-in-out infinite;
+    }
+
+    /* الرسالة */
+    #message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 60px;
+      color: #cccccc;
+      font-family: "Courier New", monospace;
+      text-shadow: 0 0 15px #cccccc, 0 0 30px #aaaaaa, 0 0 50px #999999;
+      display: none;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes glow {
+      0% { opacity: 1; text-shadow: 0 0 10px #cccccc, 0 0 20px #aaaaaa; }
+      50% { opacity: 0.6; text-shadow: 0 0 20px #cccccc, 0 0 40px #bbbbbb; }
+      100% { opacity: 1; text-shadow: 0 0 10px #cccccc, 0 0 20px #aaaaaa; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+  <div id="countdown">3</div>
+  <div id="message">n7bk rafoufty</div>
+
+  <script>
+    // -------------------- MATRIX EFFECT --------------------
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "01あいうえおかきくけこさしすせそABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const lettersArr = letters.split("");
+
+    const fontSize = 14;
+    const columns = canvas.width / fontSize; 
+    const drops = [];
+
+    for (let x = 0; x < columns; x++) {
+      drops[x] = 1;
+    }
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#cccccc"; // 🔥 اللون أبيض رمادي
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = lettersArr[Math.floor(Math.random() * lettersArr.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 33);
+
+    // -------------------- COUNTDOWN --------------------
+    let count = 3;
+    const countdownEl = document.getElementById("countdown");
+    const messageEl = document.getElementById("message");
+
+    const countdownInterval = setInterval(() => {
+      count--;
+      if (count > 0) {
+        countdownEl.textContent = count;
+      } else {
+        countdownEl.textContent = "";
+        clearInterval(countdownInterval);
+
+        // نخبّي العد التنازلي و نبيّن الرسالة
+        countdownEl.style.display = "none";
+        messageEl.style.display = "block";
+      }
+    }, 1500);
+  </script>
+</body>
+</html>
